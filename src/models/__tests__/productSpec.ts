@@ -55,6 +55,7 @@ describe('test model methods', () => {
 
   it('should return all products', async () => {
     const getAll = await product.getAllPros();
+    console.log(getAll);
     expect(getAll[0].name).toBe('USB WIFI adaptor');
     expect(parseInt(getAll[0].price as unknown as string)).toBe(169);
     expect(getAll[0].category).toBe('networking');

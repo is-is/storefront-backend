@@ -21,6 +21,12 @@ class productsController {
   //create product
   createProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const {name, price, category} = req.body;
+      if(!name || !price || !category) {
+        res.status(400);
+        res.json('product name, price and category are required');
+        return
+      }
       const newProduct = await product.addProduct(req.body);
 
       res.json({
@@ -38,9 +44,9 @@ class productsController {
       const id = req.params.id as string;
       console.log(id);
       const speProduct = await product.getOne(+id);
-      res.json({
+      res.json(
         speProduct,
-      });
+      );
     } catch (err) {
       res.send(err);
     }

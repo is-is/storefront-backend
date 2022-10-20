@@ -19,13 +19,14 @@ class orderController {
   createOrder = async (req: Request, res: Response) => {
     try {
       if (!req.body.user_id || !req.body.status) {
-        return res.json({
-          Error: 'Please Enter user_id and status',
-        });
+        res.status(400);
+        return res.json(
+           'Please Enter user_id and status'
+        );
       }
       const newOrder = await order.createOrder(req.body);
       if (newOrder) {
-        res.json({
+       return res.json({
           message: 'ORDER CREATED SUCCESSFULLY',
           data: { ...newOrder },
         });
@@ -42,9 +43,9 @@ class orderController {
       console.log(id);
       //const status = 'completed'
       const compOrders = await order.getCompleted(id);
-      res.json({
+      res.json(
         compOrders,
-      });
+      );
     } catch (err) {
       res.send(err);
     }
