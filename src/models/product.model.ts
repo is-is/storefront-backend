@@ -54,7 +54,6 @@ class PRODUCT {
       db.release();
 
       return result.rows;
-      
     } catch (err) {
       throw new Error(
         `FAILED TO GET THE PRODUCTs BY CATEGORY ${category}: ${

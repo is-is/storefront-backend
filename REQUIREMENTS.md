@@ -29,7 +29,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 **ROUTE IS**  localhost:3000/store/users        && verb is [GET]
 
 - Show (args: id)[token required]
-**ROUTE IS**  localhost:3000/store/users/id      && verb is [GET]
+**ROUTE IS**  localhost:3000/store/users/get/id      && verb is [GET]
 
 - Create (args: User)[token required]
 **ROUTE IS**  localhost:3000/store/users/create  && verb is [POST]

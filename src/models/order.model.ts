@@ -1,5 +1,4 @@
-//current order by user
-//completed orders by user]
+
 import { Order } from '../types/order.type';
 import store from '../database/index';
 
@@ -7,7 +6,6 @@ class ORDER {
   //CREATE AN ORDER  FOR TEST
   createOrder = async (order: Order): Promise<Order> => {
     try {
-
       //1-connect to database
       const connection = await store.connect();
 
@@ -44,7 +42,7 @@ class ORDER {
 
       //4-close the connection to store database
       connection.release();
-           console.log('hahaa')
+      console.log('hahaa');
       //5-return the order
       return response.rows;
     } catch (err) {
@@ -67,7 +65,7 @@ class ORDER {
       const sql = `SELECT * FROM orders WHERE user_id = $1 AND status=$2`;
 
       //3-run query from the database
-      
+
       const response = await connection.query(sql, [id, status]);
 
       //4-close the connection to store database

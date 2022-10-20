@@ -1,5 +1,3 @@
-
-
 import { User } from '../types/user.type';
 import store from '../database/index';
 import { hashPass } from '../utilities/hashPass';

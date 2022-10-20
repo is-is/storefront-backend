@@ -21,12 +21,10 @@ class usersController {
   //create user
   createUser = async (req: Request, res: Response) => {
     try {
-
-      if(!req.body.fname || !req.body.lname || !req.body.password) {
-
-         return  res.json({
-           'Error': 'Please Enter first-name, last-name and password'
-           });
+      if (!req.body.fname || !req.body.lname || !req.body.password) {
+        return res.json({
+          Error: 'Please Enter first-name, last-name and password',
+        });
       }
       const newUser = await user.createUser(req.body);
       if (newUser) {
@@ -37,7 +35,7 @@ class usersController {
           data: { ...newUser, userToken },
         });
       } else {
-        res.json({"message": "hello nouser"});
+        res.json({ message: 'hello nouser' });
       }
     } catch (err) {
       res.send(err);
@@ -48,11 +46,20 @@ class usersController {
   getUser = async (req: Request, res: Response, _next: NextFunction) => {
     try {
       const id = req.params.id as string;
-      console.log(id);
+      console.log('id ' + id);
+      if (!id || isNaN(+id)) {
+        res.status(400);
+        res.json('Please Enter Valid user id');
+        return;
+      }
       const newUser = await user.getUser(+id);
-      res.json({
-        newUser,
-      });
+      console.log("newYser " +newUser);
+      if (!newUser) {
+        res.status(404);
+        res.json(`USER DOESN'T EXIST: Can not find user with id ${id}`);
+        return
+      }
+      res.json( newUser );
     } catch (err) {
       res.send(err);
     }

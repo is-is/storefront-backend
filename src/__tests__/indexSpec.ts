@@ -8,9 +8,5 @@ describe('test the api endpoint', () => {
     const response = await request.get('/store');
     console.log(response);
     expect(response.status).toBe(200);
-
   });
-
-  
 });
-

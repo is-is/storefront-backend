@@ -20,7 +20,6 @@ app.use(errorMware);
 const PORT = config.port || 3000;
 app.use('/store', routes);
 
-
 app.get('/store', (_req, res) => {
   res.json({
     message: 'Welcome To my storefront Back Api',
@@ -32,7 +31,6 @@ app.use((_req: Request, res: Response) => {
     .status(404)
     .send('PAGE NOT FOUND, PLEASE READ THE README FILE AND TRY AGAIN');
 });
-
 
 app.listen(PORT, () => {
   console.log(`server is started at port ${PORT}`);

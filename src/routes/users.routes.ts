@@ -7,7 +7,7 @@ const router = express.Router();
 const userC = new usersController();
 
 router.get('/', autenToken, userC.getAll);
-router.get('/:id', autenToken, userC.getUser);
+router.get('/get/:id', autenToken, userC.getUser);
 router.post('/create', userC.createUser);
 
 export default router;
